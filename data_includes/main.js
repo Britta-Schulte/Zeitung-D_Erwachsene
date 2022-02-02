@@ -196,10 +196,27 @@ newTrial("Code",
         .center()
         .print()
     ,
-    newHtml("Anleitung","anleitung.html")
+        newHtml("Anleitung","anleitung.html")
         .center()
         .print()
     ,
+    newImage("Erklärbild","Erklärbild.png")
+        .size(750,350)
+        .print()
+    ,
+    newCanvas("Erklärung", 1, 10)
+        .center()
+        .print()
+    ,
+    newText("Test", "<font color=#DF0101> Probieren Sie dies hier einmal aus und geben Sie einen beliebigen Text ein. Bestätigen Sie die Eingabe mit <strong>Enter</strong>. Danach können Sie das Experiment starten.</font>")
+        .center()
+        .print()
+    ,
+    newText("Leerzeile"," <br></p>")
+        .center()
+        .print()
+    ,
+    
     newTextInput("Probe")
         .center()
         .print()
@@ -207,6 +224,7 @@ newTrial("Code",
     getTextInput("Probe")
         .wait()
     ,
+    
     newText("Weiter","<p><br>Klicken Sie nun bitte auf den Button, um das Experiment zu beginnen.")
         .center()
         .print()
