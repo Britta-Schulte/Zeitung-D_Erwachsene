@@ -208,7 +208,7 @@ newTrial("Code",
         .center()
         .print()
     ,
-    newText("Test", "<font color=#DF0101> Probieren Sie dies hier einmal aus und geben Sie einen beliebigen Text ein. Bestätigen Sie die Eingabe mit <strong>Enter</strong>. Danach können Sie das Experiment starten.</font>")
+    newText("Test", "<font color=#DF0101> Probieren hier Sie das Textfeld  einmal aus und geben Sie einen beliebigen Text ein. Bestätigen Sie die Eingabe mit <strong>Enter</strong>. Danach können Sie das Experiment starten.</font>")
         .center()
         .print()
     ,
