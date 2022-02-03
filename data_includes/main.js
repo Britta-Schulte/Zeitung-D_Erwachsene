@@ -370,7 +370,7 @@ newTrial("Meta1",
     getTextInput("Wohnort")
         .settings.log("final")
 ,       
-newText("Bildungsabschluss","<p>Was ist Ihr höchster Bildungsabschluss")
+newText("Bildungsabschluss","<p>Was ist Ihr höchster Bildungsabschluss?")
         .center()
         .print()
 ,
@@ -487,7 +487,7 @@ newTrial("Meta2",
         .settings.log("final")
        
 ,
- newText("Dialekt","Sprechen Sie einen Dialekt? Mit wem und in welchen Situationen?")
+ newText("Dialekt","<p>Sprechen Sie einen Dialekt? Mit wem und in welchen Situationen?")
         .center()
         .print()
 ,
