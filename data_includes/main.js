@@ -2,9 +2,39 @@ PennController.ResetPrefix(null);
 PennController.AddHost("https://amor.cms.hu-berlin.de/~idlsfbnd/zeitungsstudie/");
 PennController.DebugOff();
 
-Sequence("Info","Rechte","Code","Einverständniserklärung","Zustimmung","Anleitung","Counter","Trial","Meta1","Meta2");
+Sequence("Info","Consent","Code","Anleitung","Counter","Trial","Meta1","Meta2");
 SetCounter("Counter","inc",1);
 
+//New Consent 
+//Mit Boxen zum Anklicken und Dateien zum herunterladen; angelehnt an C04
+
+newTrial("Consent",
+ newImage("HU","HU Logo.png")
+        .size(289,65)
+    ,
+   
+    newImage("SFB","SFB Logo.png")
+        .size(280,86)
+    ,
+    newCanvas("Logosnebeneinander",1138,100)
+        .add(100,0, getImage("HU"))
+        .add(750,0, getImage("SFB"))
+        .center()
+        .print()
+    ,
+    newHtml("Consent", "consent.html")
+        .center()
+        .print()
+,
+    newButton("Weiter","Weiter")
+    .print()
+    .log()
+    .wait(
+        getHtml("Consent").test.complete()
+            .failure(getHtml("Consent").warn())    
+    )
+)
+,
 //WILLKOMMENSSEITE & INFOBLATT
 newTrial("Info",
     newImage("HU","HU Logo.png")
@@ -25,7 +55,7 @@ newTrial("Info",
         .print()
     ,
   
-    newButton("Weiter_Alter","Ich bin über 18 Jahre. Weiter zur Aufklärug über Rechte und Wiederruf")
+    newButton("Weiter_Alter","Ich bin über 18 Jahre.")
         .center()
         .print()
     ,
@@ -36,100 +66,7 @@ newTrial("Info",
         .wait()
 )
     ,
-//Rechte
-newTrial("Rechte",
-    newImage("HU","HU Logo.png")
-        .size(289,65)
-    ,
 
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(750,0, getImage("SFB"))
-        .center()
-        .print()
-    ,
-    newHtml("Rechte", "rechte.html")
-        .center()
-        .print()
-    ,
-
-    newButton("weiter","Weiter")
-        .center()
-        .print()
-    ,
-    newText("Leerzeile"," <br></p>")
-        .print()
-    ,
-    getButton("weiter")
-        .wait()
-)
-    ,
-//EINVERSTÄNDNISERKLÄRUNG
-newTrial("Einverständniserklärung",
-newImage("HU","HU Logo.png")
-        .size(289,65)
-    ,
-   
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(750,0, getImage("SFB"))
-        .center()
-        .print()
-   ,
-   newHtml("Einwilligung","einwilligung.html")
-        .center()
-        .print()
-    ,
-   
-    newButton("Weiter", "Weiter")
-        .center()
-        .print()
-    ,
-    newText("Leerzeile"," <br></p>")
-        .print()
-    ,
-    getButton("Weiter")
-        .wait()
-    )
-,
-
-//Zustimmung
-newTrial("Zustimmung",
-newImage("HU","HU Logo.png")
-        .size(289,65)
-    ,
-   
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(750,0, getImage("SFB"))
-        .center()
-        .print()
-   ,
-   newHtml("Zustimmung","zustimmung.html")
-        .center()
-        .print()
-    ,
-    newText("Leerzeile"," <br></p>")
-        .print()
-    ,
-   newButton("Zustimmen","Ich stimme allen eben genannten Punkten ausdrücklich zu und willige ein, das Experiment zu beginnen.")
-        .center()
-        .log()
-        .print()
-    ,    
-    getButton("Zustimmen")
-        .wait()
-)
-,
 //CODE-EINGABE
 newTrial("Code",
     newImage("HU","HU Logo.png")
@@ -181,27 +118,14 @@ newTrial("Code",
         .wait()
         )
 ,
-
 //Anleitung
     newTrial("Anleitung",
-    newImage("HU","HU Logo.png")
-        .size(289,65)
-    ,
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(750,0, getImage("SFB"))
-        .center()
-        .print()
-    ,
-        newHtml("Anleitung","anleitung.html")
+    newHtml("Anleitung","anleitung.html")
         .center()
         .print()
     ,
     newImage("Erklärbild","Erklärbild.png")
-        .size(750,350)
+        .size(800,370)
         .print()
     ,
     newCanvas("Erklärung", 1, 10)
@@ -233,7 +157,7 @@ newTrial("Code",
         .center()
         .print()
         .wait()
-        );
+        ),
 
 //Zeitung
 Template(
@@ -246,13 +170,13 @@ Template(
         newImage("Header","BHeader.png").center().print()
         ,
         newCanvas("Top_nebeneinander","auto","auto")
-            .add(420,40, newTextInput("Top_Korrektur").size(200,140) )
+            .add(620,40, newTextInput("Top_Korrektur").size(200,140) )
             .center().print()
         ,
         newImage("TopImage",row.TopImage).print( getCanvas("Top_nebeneinander") )
         ,
         newCanvas("Bottom_nebeneinander","auto","auto")
-            .add(420,40, newTextInput("Bottom_Korrektur").size(200,140) )
+            .add(620,40, newTextInput("Bottom_Korrektur").size(300,200) )
             .center().print()
         ,
         newImage("BottomImage",row.BottomImage).print( getCanvas("Bottom_nebeneinander") )
@@ -266,7 +190,7 @@ Template(
     .log( "Group" , row.Liste  )
     .log( "TopText",row.TopImage )
     .log("BottomText",row.BottomImage)
-);
+),
     //Metadaten
 newTrial("Meta1",
     newImage("HU","HU Logo.png")
@@ -295,36 +219,7 @@ newTrial("Meta1",
 ,
     getTextInput("weitereKommentare").settings.log("final")
 ,
-    newText("Geburtsjahr","<p>In welchem Jahr sind Sie geboren?")
-        .center()
-        .print()
-,
-    newCanvas("Geburtsjahr", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Geburtsjahr")
-        .center()
-        .print()
-,
-    getTextInput("Geburtsjahr")
-        .settings.log("final")
-,
-    newText("Geschlecht","<p>Geschlecht:")
-        .center()
-        .print()
-,
-    newCanvas("Geschlecht", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Geschlecht")
-        .center()
-        .print()
-,
-    getTextInput("Geschlecht")
-        .settings.log("final")
-,
+
     newText("Geburtsort", "<p>Geburtsort (Stadt, Region):")
         .center()
         .print()
