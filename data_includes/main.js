@@ -165,11 +165,11 @@ newTrial("Code",
         .wait()
         .settings.log("final")
 ,
-    newText("Danke","Vielen Dank! Als nächstes folgt eine Einwilligungserklärung. Klicken Sie bitte auf den Button.<b></p>")
+    newText("Danke","Vielen Dank! Als nächstes folgt eine Anleitung für das Experiment. Klicken Sie bitte auf den Button.<b></p>")
         .center()
         .print()
 ,
-    newButton("weiter","Einwilligungserklärung")
+    newButton("weiter","Weiter zur Anleitung")
         .center()
         .print()
 ,
@@ -178,7 +178,7 @@ newTrial("Code",
         .print()
 ,
     getButton("weiter")
-        .wait()
+        .wait(getTextinput("Texteingabe-Code").test.text(/[a-z]+/))
         )
 ,
 
