@@ -261,7 +261,7 @@ Template(
         ,             
         getTextInput("Bottom_Korrektur").settings.log("final")
         ,             
-        newButton("Weiter","Weiter").center().print().wait()
+        newButton("Weiter","Weiter").center().print().wait(getTextInput("Top_Korrektur").test.text(/[a-z]+/),getTextInput("Bottom_Korrektur").test.text(/[a-z]+/))
     )
     .log( "Group" , row.Liste  )
     .log( "TopText",row.TopImage )
