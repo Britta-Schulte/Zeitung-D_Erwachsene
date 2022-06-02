@@ -268,181 +268,273 @@ Template(
     .log("BottomText",row.BottomImage)
 );
     //Metadaten
+    //Personenbezogene Daten Seite 1 - Alter, Geschlecht, Bildung, Sozialerstatus
 newTrial("Meta1",
     newImage("HU","HU Logo.png")
         .size(289,65)
     ,
-     newImage("SFB","SFB Logo.png")
+    newImage("UNam","UNam Logo.png")
+        .size(230,60)
+    ,
+    newImage("SFB","SFB Logo.png")
         .size(280,86)
     ,
     newCanvas("Logosnebeneinander",1138,100)
         .add(100,0, getImage("HU"))
+        .add(450,0, getImage("UNam"))
         .add(750,0, getImage("SFB"))
         .center()
         .print()
- ,
-    newText("Meta-1", "<p>Vielen Dank für die Teilnahme!<br></p>Nun ben&ouml;tigen wir noch biographische Informationen. Bitte beantworten Sie die Fragen in den Textfeldern und best&auml;tigen wie gehabt mit <b>Enter</b>. Falls Sie mehr Platz ben&ouml;tigen sollten, k&ouml;nnen Sie das Textfeld an seiner rechten unteren Ecke anklicken, gedr&uuml;ckt halten und gr&ouml;ßer ziehen.")
-        .center()
-        .print()
-,
-    newText("Kommentare","<br><b>Ist Ihnen etwas aufgefallen oder haben Sie Kommentare?</b></p>")
-        .center()
-        .print()
-,
-    newTextInput("weitereKommentare")
-        .center()
-        .print()
-,
-    getTextInput("weitereKommentare").settings.log("final")
-,
-    newText("Geburtsjahr","<p>In welchem Jahr sind Sie geboren?")
-        .center()
-        .print()
-,
-    newCanvas("Geburtsjahr", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Geburtsjahr")
-        .center()
-        .print()
-,
-    getTextInput("Geburtsjahr")
-        .settings.log("final")
-,
-    newText("Geschlecht","<p>Geschlecht:")
-        .center()
-        .print()
-,
-    newCanvas("Geschlecht", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Geschlecht")
-        .center()
-        .print()
-,
-    getTextInput("Geschlecht")
-        .settings.log("final")
-,
-    newText("Geburtsort", "<p>Geburtsort (Stadt, Region):")
-        .center()
-        .print()
-,
-    newCanvas("Geburtsort", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Geburtsort")
-        .center()
-        .print()
-,
-    getTextInput("Geburtsort")
-        .settings.log("final")
-,
-    newText("Aufgewachsen","<p>Wo sind Sie aufgewachsen?")
-        .center()
-        .print()
-,
-    newCanvas("Aufgewachsen", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Aufgewachsen")
-        .center()
-        .print()
-,
-    getTextInput("Aufgewachsen")
-        .settings.log("final")
-,    
-    newText("Wohnort","<p>Wohnort (Stadt, Region):")
-        .center()
-        .print()
-,
-    newCanvas("Wohnort", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Wohnort")
-        .center()
-        .print()
-,
-    getTextInput("Wohnort")
-        .settings.log("final")
-,       
-newText("Bildungsabschluss","<p>Was ist Ihr höchster Bildungsabschluss")
-        .center()
-        .print()
-,
-    newCanvas("Bildungsabschluss", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Bildungsabschluss")
-        .center()
-        .print()
-,
-    getTextInput("Bildungsabschluss")
-        .settings.log("final")
-,
-     newText("Studium","Falls Sie studieren: Welches Fach?")
-        .center()
-        .print()
-,
-    newCanvas("Studium", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Studium")
-        .center()
-        .print()
-,
-    getTextInput("Studium")
-        .settings.log("final")
-,
- newText("Semester","In welchem Fachsemester sind Sie?")
-        .center()
-        .print()
-,
-    newCanvas("Semester", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("Semester")
-        .center()
-        .print()
-,
-    getTextInput("Semester")
-        .settings.log("final")
-,
-    newButton("weiter","Weiter")
-        .center()
-        .print()
     ,
-    newText("Leerzeile"," <br></p>")
-        .print()
-    ,
-    getButton("weiter")
-        .wait()
 
-)
-,
-//Metadaten2
+    newText("Meta-1", "<b>Personenbezogene Daten</b> <p>Wir brauchen einige persönliche Angaben von Ihnen. Diese werden anonymisiert gespeichert und eine spätere Zuordnung zu Ihnen wird nicht möglich sein. Bitte nehmen Sie sich beim Ausfüllen der Felder Zeit.<p>")
+ //       .settings.css("text-align","justify")
+        .center()
+        .print()
+
+               ,
+               newCanvas("democanvas", 800,120)
+               .settings.add(0,0, getText("Meta-1"))
+               //.settings.center()
+               .print()
+               ,
+               //Alter
+               newDropDown("age", "Bitte eine Option ausw&auml;hlen")
+               .settings.add("18" , "19" , "20", "21" , "22" , "23", "24" , "25" , "26", "27" , "28" , "29", "30" , "31", "32","33", "34" , "35", "36","37","38","39","40-50","51-60","über 61")
+               .log()
+
+               ,
+               newText("agetext", "Alter:")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newCanvas("agecanvas", 1000, 40)
+               .settings.add(0,0,getText("agetext"))
+               .settings.add(450,2, getDropDown("age"))
+               //.settings.center()
+               .print()
+               ,
+               //Geschlecht
+               newText("sex", "Geschlecht:")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newDropDown("sex", "Bitte eine Option ausw&auml;hlen")
+               .settings.add("Weiblich", "M&auml;nnlich", "Divers")
+               .log()
+               ,
+               newCanvas("sexcanvas", 1000, 40)
+               .settings.add(0, 0, getText("sex"))
+               .settings.add(450,3, getDropDown("sex"))
+               //.settings.center()
+               .print()
+               ,
+               //Wohnort
+               newText("wohnort", "Wohnort (Stadt, Region):")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newTextInput("wohnort")
+
+               .log()
+               ,
+               newCanvas("wohnortcanvas", 1000, 40)
+               .settings.add(0, 0, getText("wohnort"))
+               .settings.add(450,3, getTextInput("wohnort"))
+               //.settings.center()
+               .print()
+               ,
+                newText("Leerzeile"," <br></p>")
+                  .center()
+                .print()
+                 ,
+                 //aufgewachsen
+            newText("aufgewachsen", "Wo sind Sie aufgewachsen?")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newTextInput("aufgewachsen")
+                .log()
+               //.settings.size(200,40)
+               ,
+               newCanvas("aufgewachsen", 1000,40)
+               .settings.add(0,0, getText("aufgewachsen"))
+               .settings.add(450,4,getTextInput("aufgewachsen"))
+               //.settings.center()
+               .print()
+               ,
+               newText("Leerzeile"," <br></p>")
+                  .center()
+                .print()
+                 ,
+                 //Abschluss
+                newText("abschluss", "H&ouml;chster Bildungsabschluss:")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newDropDown("abschluss", "Bitte eine Option ausw&auml;hlen")
+               .settings.add("kein Abschluss","Schulabschluss","Abitur oder gleichwertiger Abschluss","Studium ohne Abschluss","Bachelor","Master", "Promotion","Magister","Diplom", "Ausbildung", "Sonstige")     // MAYBE ADD QUESTIONS ABOUT DIALECT AND DOMINANT HAND
+               //.settings.size(191,20)
+               .log()
+               ,
+               newCanvas("abschlusscanvas", 1000, 40)
+               .settings.add(0, 0, getText("abschluss"))
+               .settings.add(470,4, getDropDown("abschluss"))
+               //.settings.center()
+               .print()
+               ,
+         //Schulbesuch
+               newText("schulbesuch", "Falls Sie derzeit eine Schule besuchen, was für eine Schule besuchen Sie?")
+               .settings.css("font-size", "18px")
+               .settings.bold()
+               ,
+               newDropDown("schulbesuch", "Bitte eine Option ausw&auml;hlen")
+               .settings.add("Grundschule","Integrierte Sekundarschule (ISS)","Gymnasium","Fachgymnasium","Schulausbildung bereits beendet","Sonstige")     // MAYBE ADD QUESTIONS ABOUT DIALECT AND DOMINANT HAND
+               //.settings.size(191,20)
+               .log()
+               ,
+               newCanvas("schulbesuchcanvas", 1000, 40)
+               .settings.add(0, 0, getText("schulbesuch"))
+               .settings.add(470,4, getDropDown("schulbesuch"))
+               //.settings.center()
+               .print()
+               ,
+               //Schule
+               newText("schule","<b>Sind Sie in Deutschland zur Schule gegangen?</b><br><small>(Falls nein, wo?)</small><br><br>")
+               .settings.css("font-size", "18px")
+
+               ,
+               newTextInput("schuleinput")
+               .settings.size(150,40)
+               .log()
+               .settings.hidden()
+               ,
+               newText("schule_input", "")
+               .settings.after(getTextInput("schuleinput"))
+               ,
+               newDropDown("schule",  "<br>" +"Bitte eine Option ausw&auml;hlen")
+               .settings.add("Ja","Nein")
+               .log()
+               .settings.after(getText("schule_input"))
+               .settings.callback(
+                   getDropDown("schule")
+                   .test.selected("Nein")
+                   .success(getTextInput("schuleinput").settings.visible())
+
+                    )
+               ,
+               newCanvas("schule",1000, 40)
+               .settings.add(0, 0, getText("schule"))
+               .settings.add(470,3, getDropDown("schule"))
+               //.settings.center()
+               .print()
+               ,
+               newCanvas("filler", 1, 20)
+
+               .print()
+               ,
+               //Studium
+               newText("studium","<b>Studieren Sie?</b><br><small>(Falls ja, welches Fach und Fachsemester?)</small><br><br>")
+               .settings.css("font-size", "18px")
+
+               ,
+               newTextInput("studiuminput")
+               .settings.size(150,40)
+               .log()
+               .settings.hidden()
+               ,
+               newText("studium_input", "")
+               .settings.after(getTextInput("studiuminput"))
+               ,
+               newDropDown("studium",  "<br>" +"Bitte eine Option ausw&auml;hlen")
+               .settings.add("Ja", "Nein")
+               .log()
+               .settings.after(getText("studium_input"))
+               .settings.callback(
+                   getDropDown("studium")
+                   .test.selected("Ja")
+                   .success(getTextInput("studiuminput").settings.visible(
+
+                   )) )
+               ,
+               newCanvas("studium", 1000, 40)
+               .settings.add(0, 0, getText("studium"))
+               .settings.add(500,3, getDropDown("studium"))
+               //.settings.center()
+               .print()
+               ,
+               newCanvas("filler", 1, 20)
+               .print()
+               ,
+    newButton("continue", "Weiter")
+               .settings.css("font-family", "calibri").settings.css("font-size", "12px")
+               //.settings.center()
+               .log()
+               .center()
+               .print()
+               .wait(
+            newFunction('dummy', ()=>true).test.is(true)
+            // age
+            .and( getDropDown("age").test.selected()
+                    .failure( newText('errorage', "<br>Bitte Alter angeben.").color("red") .center().print() )
+            // sex
+            ).and( getDropDown("sex").test.selected()
+                    .failure( newText('errorsex', "<br>Bitte Geschlecht angeben.").color("red") .center().print() )
+             // abschluss
+            ) .and( getDropDown("abschluss").test.selected()
+                    .failure( newText('errorabschluss', "<br>Bitte höchsten Abschluss angeben.").color("red") .center().print() )
+
+            ).and( getDropDown("studium").test.selected()
+                   .failure( newText('errorstudium', "<br>Bitte Studium angeben.").color("red") .center().print() )
+             ).and( getDropDown("schule").test.selected()
+                   .failure( newText('errorschule', "<br>Bitte Land der Beschulung angeben.").color("red") .center().print() )
+
+            ).and(
+             getTextInput("wohnort").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("wohnorter","<br>Bitte Wohnort angeben")
+                   .settings.color("red")
+                   .center()
+                   .print())
+                ).and(
+             getTextInput("aufgewachsen").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("aufgewachsener","<br>Bitte angeben, wo Sie aufgewachsen sind.")
+                   .settings.color("red")
+                   .center()
+                   .print())
+
+            )  )
+               ,
+               getDropDown("age").wait("first")
+               ,
+               getDropDown("sex").wait("first")
+               ,
+                getDropDown("studium").wait("first")
+               ,
+               getDropDown("abschluss").wait("first")
+  )
+  ,
+  //Metadaten 2: Sprachbiographie
 newTrial("Meta2",
     newImage("HU","HU Logo.png")
-        .size(289,65)
+         .size(289,65)
     ,
-     newImage("SFB","SFB Logo.png")
+    newImage("UNam","UNam Logo.png")
+        .size(230,60)
+    ,
+    newImage("SFB","SFB Logo.png")
         .size(280,86)
     ,
     newCanvas("Logosnebeneinander",1138,100)
         .add(100,0, getImage("HU"))
+        .add(450,0, getImage("UNam"))
         .add(750,0, getImage("SFB"))
         .center()
         .print()
- ,
-    newText("SprachenMutter","<p>Welche Sprachen spricht/sprach Ihre Mutter? Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
-        .center()
+    ,
+       newText("SprachenMutter","<b>Welche Sprachen spricht/sprach Ihre Mutter im Alltag?</b><br>Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
+ //       .center()
         .print()
 ,
     newCanvas("SprachenMutter", 1, 10)
@@ -450,74 +542,163 @@ newTrial("Meta2",
         .print()
 ,
     newTextInput("SprachenMutter")
-        .center()
+ //       .center()
+        .size(600,80)
         .print()
 ,
     getTextInput("SprachenMutter")
-        .settings.log("final")
+        .log("final")
 ,
-    newText("SprachenVater","<p>Welche Sprachen spricht/sprach Ihr Vater? Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
-        .center()
+newText("Leerzeile"," <br></p>")
+    .center()
+    .print()
+,
+    newText("SprachenVater","<b>Welche Sprachen spricht/sprach Ihr Vater im Alltag?</b><br> Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
+  //      .center()
         .print()
 ,
     newCanvas("SprachenVater", 1, 10)
-        .center()
+//        .center()
         .print()
 ,
     newTextInput("SprachenVater")
-        .center()
+//        .center()
+        .size(600,80)
         .print()
 ,
     getTextInput("SprachenVater")
-        .settings.log("final")
-,
-    newText("SprachenSelbst","<p>Welche Sprachen sprechen Sie selbst im Alltag? Mit wem und in welchen Situationen? Bitte sortieren und mit der am häufigsten gesprochenen Sprache beginnen.")
-        .center()
+        .log("final")
+               ,
+               newText("Leerzeile"," <br></p>")
+                 .center()
+                .print()
+                 ,
+       newText("SprachenSelbst","<b>Welche Sprachen sprechen Sie selbst im Alltag?</b><br> Mit wem und in welchen Situationen? Bitte sortieren und mit der am häufigsten gesprochenen Sprache beginnen.")
+ //       .center()
         .print()
 ,
     newCanvas("SprachenSelbst", 1, 10)
-        .center()
+ //       .center()
         .print()
 ,
     newTextInput("SprachenSelbst")
-        .center()
+  //      .center()
+        .size(600,80)
         .print()
 ,
     getTextInput("SprachenSelbst")
-        .settings.log("final")
-       
-,
- newText("Dialekt","Sprechen Sie einen Dialekt? Mit wem und in welchen Situationen?")
-        .center()
+        .log("final")
+    ,
+ newText("Leerzeile"," <br></p>")
+                 .center()
+                .print()
+                 ,
+
+ newText("Dialekt","<b>Sprechen Sie einen Dialekt?</b><br> Mit wem und in welchen Situationen?")
+//        .center()
         .print()
 ,
     newCanvas("Dialekt", 1, 10)
-        .center()
+ //       .center()
         .print()
 ,
+
     newTextInput("Dialekt")
-        .center()
+ //       .center()
+ .size(600,80)
         .print()
 ,
     getTextInput("Dialekt")
-        .settings.log("final")
-,        
-    newText("Danke","<p>Vielen Dank f&uuml;r Ihre Teilnahme! Dürfen wir Sie in Zukunft erneut kontaktieren? Wenn ja, geben Sie bitte ihre E-Mailadresse in das Textfeld ein. Wenn nein, lassen Sie das Textfeld bitte einfach frei. <br><p>Die Angabe der Kontaktdaten ist freiwillig. Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert.")
-        .center()
+        .log("final")
+,
+
+newText("Leerzeile"," <br></p>")
+                 .center()
+                .print()
+                 ,
+newText("Email","<b>Dürften wir Sie in Zukunft erneut kontaktieren?</b><br>Wenn ja, bitte Emailadresse angeben.<br>Die Angabe der Kontaktdaten ist freiwillig. Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert.")
+//        .center()
         .print()
 ,
-    newTextInput("Kontaktinfo")
-        .center()
+    newCanvas("Email", 1, 10)
+ //       .center()
         .print()
 ,
-    getTextInput("Kontaktinfo")
-        .settings.log("final")
-,
-    newText("Leerzeile","<br>")
+
+    newTextInput("Email")
+ //       .center()
+        .size(600,80)
         .print()
 ,
-    newButton("Ende","Ergebnisse abschicken und beenden")
-        .center()
-        .print()
-        .wait()
-);
+    getTextInput("Email")
+        .log("final")
+,
+newText("Leerzeile"," <br></p>")
+                 .center()
+                .print()
+                 ,
+
+    newButton("Ende", "Experiment beenden und Daten abschicken")
+               .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+               //.settings.center()
+               .log()
+               .center()
+               .print()
+               .wait(
+            newFunction('dummy', ()=>true).test.is(true)
+                .and(
+             getTextInput("SprachenMutter").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errormutter","<br>Bitte Sprachen der Mutter angeben")
+                   .settings.color("red")
+                   .center()
+                   .print()
+                   )
+                ).and(
+             getTextInput("SprachenVater").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errorvater","<br>Bitte Sprachen des Vaters angeben.")
+                   .settings.color("red")
+                   .center()
+                   .print()
+                   )
+                ).and(
+             getTextInput("SprachenSelbst").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errorselbst","<br>Bitte angeben, welche Sprachen Sie sprechen.")
+                   .settings.color("red")
+                   .center()
+                   .print()
+                   )
+            ).and(
+             getTextInput("Dialekt").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errordialekt","<br>Bitte Dialekt angeben.")
+                   .settings.color("red")
+                   .center()
+                   .print())
+            ) 
+
+            )
+ )
+,
+// Send results manually
+SendResults("send");
+
+newTrial("Final",
+         newText("<p>Vielen Dank f&uuml;r Ihre Teilnahme! Die Studie ist hiermit beendet. </p>")
+            .settings.css("font-family","times new roman") .settings.css("font-size", "18px")
+            .settings.center()
+            .print()
+        ,
+
+        newText ("<p>Sie können das Fenster jetzt schließen.")
+            .settings.css("font-family","times new roman") .settings.css("font-size", "18px")
+            .settings.center()
+            .print()
+        ,
+        newButton("void", "")
+            .wait()
+
+
+   );
